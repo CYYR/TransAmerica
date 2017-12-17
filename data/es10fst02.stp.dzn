@@ -30,4 +30,4 @@ endnodes = [|false,false,false,false,false,false,false,false,true,false,true,fal
 |false,false,false,false,false,true,true,false,false,false,false,false,false,false
 |];
 terminals = {1,4,10};
-link_cost = [221682,788799,935559,814471,646629,2530185,726074,2413469,2060325,356,1446282,3410061,3140212];
+link_cost = [1,1,1,1,1,1,1,1,1,1,1,1,1];
