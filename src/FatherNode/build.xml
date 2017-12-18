@@ -15,6 +15,7 @@
     <description>
       Test set es10fst
     </description>
+    <echo> mzn-chuffed </echo>
     <antcall target="execHelp">
         <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-chuffed"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
@@ -22,6 +23,7 @@
         <param name="suffix" value=".stp.dzn"/>
         <param name="data.dir" value="${data.top.dir}/es10fst/"/>
     </antcall>
+    <echo> mzn-g12fd </echo>
     <antcall target="execHelp">
         <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12fd"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
@@ -29,6 +31,7 @@
         <param name="suffix" value=".stp.dzn"/>
         <param name="data.dir" value="${data.top.dir}/es10fst/"/>
     </antcall>
+    <echo> mzn-g12mip </echo>
     <antcall target="execHelp">
         <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12mip"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
@@ -36,6 +39,7 @@
         <param name="suffix" value=".stp.dzn"/>
         <param name="data.dir" value="${data.top.dir}/es10fst/"/>
     </antcall>
+    <echo> mzn-gecode </echo>
     <antcall target="execHelp">
         <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gecode"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
@@ -43,7 +47,8 @@
         <param name="suffix" value=".stp.dzn"/>
         <param name="data.dir" value="${data.top.dir}/es10fst/"/>
     </antcall>
-    <!--antcall target="execHelp">
+    <!--echo> mzn-gurobi </echo>
+    <antcall target="execHelp">
         <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gurobi"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
         <param name="prefix" value="es10fst"/>
@@ -55,6 +60,7 @@
       Test set es20fst
     </description>
 
+    <echo> mzn-chuffed </echo>
     <antcall target="execHelp">
         <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-chuffed"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
@@ -62,6 +68,7 @@
         <param name="suffix" value=".stp.dzn"/>
         <param name="data.dir" value="${data.top.dir}/es20fst/"/>
     </antcall>
+    <echo> mzn-g12fd </echo>
     <antcall target="execHelp">
         <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12fd"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
@@ -69,6 +76,7 @@
         <param name="suffix" value=".stp.dzn"/>
         <param name="data.dir" value="${data.top.dir}/es20fst/"/>
     </antcall>
+    <echo> mzn-g12mip </echo>
     <antcall target="execHelp">
         <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12mip"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
@@ -76,6 +84,7 @@
         <param name="suffix" value=".stp.dzn"/>
         <param name="data.dir" value="${data.top.dir}/es20fst/"/>
     </antcall>
+    <echo> mzn-gecode </echo>
     <antcall target="execHelp">
         <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gecode"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
@@ -83,7 +92,8 @@
         <param name="suffix" value=".stp.dzn"/>
         <param name="data.dir" value="${data.top.dir}/es20fst/"/>
     </antcall>
-    <!--antcall target="execHelp">
+    <!--echo> mzn-gurobi </echo>
+    <antcall target="execHelp">
         <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gurobi"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
         <param name="prefix" value="es20fst"/>

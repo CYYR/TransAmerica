@@ -7,6 +7,7 @@ set of int: terminals;
 
 array [nodes] of var 0..1: vs;
 array [nodes] of var -1..nbV: father_node;
+array [nodes] of var 1..nbV: distances;
 array [edges] of var 0..1: es;
 array [nodes, edges] of bool: map;
 array [edges, nodes] of bool: endnodes;
@@ -42,16 +43,12 @@ constraint forall (e in edges) (forall (n1, n2 in nodes where not(n1=min(termina
 
 constraint forall (n1, n2 in nodes where not(n1=n2)) (not (father_node[n1]=n2 \/ father_node[n2]=n1) <-> (not connected_node(n1,n2)));
 
-predicate noCycle (int: startPoint) = noCycleHelp(startPoint, father_node[startPoint]);
 
-predicate noCycleHelp (int: startPoint, var int: middlePoint) = (if startPoint=middlePoint then false
-                                                             else (if middlePoint=min(terminals)
-                                                                   then true
-                                                                   else noCycleHelp(startPoint, father_node[middlePoint])
-                                                                        endif
-                                                                   )
-                                                                  endif);
+constraint forall (n1, n2 in nodes where not(n1=min(terminals))) (father_node[n1]=n2 -> distances[n1]=distances[n2]+1);
 
+constraint distances[min(terminals)] = 1;
+
+constraint forall (n in nodes) (vs[n]=0 -> distances[n]=nb);
 
 constraint w = sum (i in edges) (es[i] * link_cost[i]);
 
