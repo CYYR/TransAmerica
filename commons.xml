@@ -1,0 +1,110 @@
+<!--
+    2017.12.15 Rui Chen
+    Australia National University
+    Supervisor: Patrik Haslum, Jing Cui
+-->
+
+<project name="commons" basedir=".">
+  <property name="data.top.dir" value="${basedir}/data"/>
+  <property name="src.dir" value="${basedir}/src"/>
+  <property name="harness.dir" value="${basedir}/harness"/>
+  <property name="dist.dir" value="${basedir}/output"/>
+
+  <target name="all" depends="clean, init, data, exec, output"/>
+
+  <target name="init">
+    <mkdir dir="output/"/>
+    <mkdir dir="download/"/>
+    <touch file="${dist.dir}/${top.dir}-output.txt"/>
+  </target>
+
+  <target name="output"/>
+
+  <target name="data"/>
+
+  <target name="exec"/>
+
+  <target name="clean">
+    <delete dir="output/"/>
+    <delete dir="download/"/>
+  </target>
+
+  <target name="execHelp">
+    <exec executable="${mzn-solver}" dir="${data.dir}/" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}01${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}02.stp.dzn"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}03${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}04${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}05${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}06${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}07${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}08${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}09${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}10${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}11${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}12${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}13${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}14${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+      <arg value="${Constraint.Solver}"/>
+      <arg value="${prefix}15${suffix}"/>
+      <arg value="--all-solutions"/>
+    </exec>
+  </target>
+
+</project>

@@ -1,0 +1,18 @@
+<!--
+    2017.12.15 Rui Chen
+    Australia National University
+    Supervisor: Patrik Haslum, Jing Cui
+-->
+
+<project name="TranAmeri" default="allSolver" basedir=".">
+  <import file="${basedir}/src/FatherNode/build.xml"/>
+
+  <target name="FatherNode">
+    <antcall target="exec"/>
+  </target>
+
+  <target name="allSolver">
+    <antcall target="FatherNode"/>
+  </target>
+
+</project>
