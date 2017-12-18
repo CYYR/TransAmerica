@@ -30,13 +30,28 @@ constraint father_node[min(terminals)]=min(terminals);
 constraint forall (n in nodes) (vs[n]=1 <-> father_node[n]>0);
 constraint forall (n in nodes) (vs[n]=0 <-> father_node[n]=0);
 
-predicate connected_node (int: n1, int: n2) = exists (e in edges) (endnodes[e,n1] /\ endnodes[e,n2]);
+predicate connected_node (int: n1, int: n2) = exists (e in edges) (endnodes[e,n1] /\ endnodes[e,n2] /\ es[e]=1);
 
 predicate chosen (int: n1) = vs[n1]=1;
 
 constraint forall (n1, n2 in nodes where not(n1=min(terminals))) (father_node[n1]=n2 -> chosen(n2) /\ not (father_node[n2]=n1) /\ connected_node(n1,n2));
 
+constraint forall (n1 in nodes where not(n1=min(terminals))) (not (father_node[n1]=n1));
+
 constraint forall (e in edges) (forall (n1, n2 in nodes where not(n1=min(terminals))) ((endnodes[e,n1] /\ endnodes[e,n2] /\ father_node[n1]=n2) -> es[e]=1));
+
+constraint forall (n1, n2 in nodes where not(n1=n2)) (not (father_node[n1]=n2 \/ father_node[n2]=n1) <-> (not connected_node(n1,n2)));
+
+predicate noCycle (int: startPoint) = noCycleHelp(startPoint, father_node[startPoint]);
+
+predicate noCycleHelp (int: startPoint, var int: middlePoint) = (if startPoint=middlePoint then false
+                                                             else (if middlePoint=min(terminals)
+                                                                   then true
+                                                                   else noCycleHelp(startPoint, father_node[middlePoint])
+                                                                        endif
+                                                                   )
+                                                                  endif);
+
 
 constraint w = sum (i in edges) (es[i] * link_cost[i]);
 
