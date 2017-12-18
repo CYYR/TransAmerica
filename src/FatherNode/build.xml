@@ -1,0 +1,96 @@
+<!--
+    2017.12.15 Rui Chen
+    Australia National University
+    Supervisor: Patrik Haslum, Jing Cui
+-->
+
+<project name="fatherNode" default="all" basedir="../../">
+
+  <import file="${basedir}/commons.xml"/>
+
+  <property name="top.dir" value="FatherNode"/>
+
+  <target name="exec">
+
+    <description>
+      Test set es10fst
+    </description>
+    <antcall target="execHelp">
+        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-chuffed"/>
+        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+        <param name="prefix" value="es10fst"/>
+        <param name="suffix" value=".stp.dzn"/>
+        <param name="data.dir" value="${data.top.dir}/es10fst/"/>
+    </antcall>
+    <antcall target="execHelp">
+        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12fd"/>
+        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+        <param name="prefix" value="es10fst"/>
+        <param name="suffix" value=".stp.dzn"/>
+        <param name="data.dir" value="${data.top.dir}/es10fst/"/>
+    </antcall>
+    <antcall target="execHelp">
+        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12mip"/>
+        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+        <param name="prefix" value="es10fst"/>
+        <param name="suffix" value=".stp.dzn"/>
+        <param name="data.dir" value="${data.top.dir}/es10fst/"/>
+    </antcall>
+    <antcall target="execHelp">
+        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gecode"/>
+        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+        <param name="prefix" value="es10fst"/>
+        <param name="suffix" value=".stp.dzn"/>
+        <param name="data.dir" value="${data.top.dir}/es10fst/"/>
+    </antcall>
+    <!--antcall target="execHelp">
+        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gurobi"/>
+        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+        <param name="prefix" value="es10fst"/>
+        <param name="suffix" value=".stp.dzn"/>
+        <param name="data.dir" value="${data.top.dir}/es10fst/"/>
+    </antcall-->
+
+    <description>
+      Test set es20fst
+    </description>
+
+    <antcall target="execHelp">
+        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-chuffed"/>
+        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+        <param name="prefix" value="es20fst"/>
+        <param name="suffix" value=".stp.dzn"/>
+        <param name="data.dir" value="${data.top.dir}/es20fst/"/>
+    </antcall>
+    <antcall target="execHelp">
+        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12fd"/>
+        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+        <param name="prefix" value="es20fst"/>
+        <param name="suffix" value=".stp.dzn"/>
+        <param name="data.dir" value="${data.top.dir}/es20fst/"/>
+    </antcall>
+    <antcall target="execHelp">
+        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12mip"/>
+        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+        <param name="prefix" value="es20fst"/>
+        <param name="suffix" value=".stp.dzn"/>
+        <param name="data.dir" value="${data.top.dir}/es20fst/"/>
+    </antcall>
+    <antcall target="execHelp">
+        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gecode"/>
+        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+        <param name="prefix" value="es20fst"/>
+        <param name="suffix" value=".stp.dzn"/>
+        <param name="data.dir" value="${data.top.dir}/es20fst/"/>
+    </antcall>
+    <!--antcall target="execHelp">
+        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gurobi"/>
+        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+        <param name="prefix" value="es20fst"/>
+        <param name="suffix" value=".stp.dzn"/>
+        <param name="data.dir" value="${data.top.dir}/es20fst/"/>
+    </antcall-->
+
+  </target>
+
+</project>
