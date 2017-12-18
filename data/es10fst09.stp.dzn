@@ -1,8 +1,6 @@
-es_decr_min = int_search([es[10],es[15],es[5],es[6],es[28],es[4],es[11],es[13],es[22],es[9],es[25],es[18],es[3],es[27],es[23],es[8],es[17],es[16],es[24],es[21],es[2],es[19],es[12],es[7],es[14],es[29],es[1],es[20],es[26],vs[7],vs[3],vs[12],vs[13],vs[2],vs[5],vs[8],vs[14],vs[17],vs[21],vs[19],vs[9],vs[11],vs[1],vs[16],vs[15],vs[6],vs[18],vs[20],vs[10],vs[4]], input_order, indomain_min, complete);
 nbV = 21;
 nbE = 29;
-nbT = 10;
-adj = [|false,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+map = [|false,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
 |false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
 |false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false
 |false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true
@@ -55,4 +53,4 @@ endnodes = [|false,false,false,false,false,false,false,false,false,false,true,tr
 |false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true
 |];
 terminals = {1,2,3,4,5,6,7,8,9,10};
-ws = [98246,402384,1970316,2982031,3223942,3080277,276983,1463887,2091285,3500925,2491070,367506,2275558,259412,3359899,627398,947628,2031119,367506,4391,600977,2275558,1517813,600977,2035510,4391,1880928,3051489,102301];
+link_cost = [98246,402384,1970316,2982031,3223942,3080277,276983,1463887,2091285,3500925,2491070,367506,2275558,259412,3359899,627398,947628,2031119,367506,4391,600977,2275558,1517813,600977,2035510,4391,1880928,3051489,102301];

@@ -1,8 +1,6 @@
-es_decr_min = int_search([es[7],es[6],es[11],es[4],es[9],es[1],es[5],es[8],es[13],es[10],es[3],es[12],es[2],vs[13],vs[9],vs[6],vs[1],vs[5],vs[4],vs[12],vs[3],vs[11],vs[8],vs[14],vs[7],vs[2],vs[10]], input_order, indomain_min, complete);
 nbV = 14;
 nbE = 13;
-nbT = 10;
-adj = [|false,false,false,false,false,false,false,false,true,false,false,false,false
+map = [|false,false,false,false,false,false,false,false,true,false,false,false,false
 |false,false,false,false,false,false,false,false,false,false,false,true,false
 |false,false,false,false,false,false,false,false,false,true,true,false,false
 |false,false,false,false,false,false,true,true,false,false,false,false,false
@@ -32,4 +30,4 @@ endnodes = [|false,false,false,false,true,true,false,false,false,false,false,fal
 |false,false,false,false,false,false,false,true,false,false,false,false,false,true
 |];
 terminals = {1,2,3,4,5,6,7,8,9,10};
-ws = [2921635,85801,228120,3151177,2607082,4042160,4290001,806091,2932611,624120,3503878,191492,640904];
+link_cost = [2921635,85801,228120,3151177,2607082,4042160,4290001,806091,2932611,624120,3503878,191492,640904];
