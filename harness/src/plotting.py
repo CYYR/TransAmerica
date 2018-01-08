@@ -8,7 +8,7 @@ def to_length_nine(aString):
         aString += "0"
     return aString
 
-def quick_plot(path):
+def quick_plot(path, str_path):
     sat_file = open(path, 'r')
     title = sat_file.readline().strip()
     name=[]
@@ -39,7 +39,7 @@ def quick_plot(path):
     plt.legend()
 
     plt.tight_layout()
-    plt.savefig("/Users/chenrui/Desktop/" + str(title) + "jpg")
+    plt.savefig(str_path + str(title) + "jpg")
 
 def time_different(start, end):
     hou1 = int(start[0:2])
@@ -57,4 +57,7 @@ def time_different(start, end):
     return (hourd * 60 * 60 * 1000) + (mind * 60 * 1000) + (secd * 1000) + (minisecd)
 
 if __name__=="__main__":
-    quick_plot(sys.argv[1])
+    if (len(sys.argx) != 3):
+        print("plotting.py <Path_to_Statistics> <Path_for_store_the_tables>")
+    else:
+        quick_plot(sys.argv[1], sys.argv[2])
