@@ -15,91 +15,148 @@
     <description>
       Test set es10fst
     </description>
-    <echo> mzn-chuffed </echo>
-    <antcall target="execHelp">
-        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-chuffed"/>
-        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
-        <param name="prefix" value="es10fst"/>
-        <param name="suffix" value=".stp.dzn"/>
-        <param name="data.dir" value="${data.top.dir}/es10fst/"/>
-    </antcall>
-    <echo> mzn-g12fd </echo>
-    <antcall target="execHelp">
-        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12fd"/>
-        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
-        <param name="prefix" value="es10fst"/>
-        <param name="suffix" value=".stp.dzn"/>
-        <param name="data.dir" value="${data.top.dir}/es10fst/"/>
-    </antcall>
-    <echo> mzn-g12mip </echo>
-    <antcall target="execHelp">
-        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12mip"/>
-        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
-        <param name="prefix" value="es10fst"/>
-        <param name="suffix" value=".stp.dzn"/>
-        <param name="data.dir" value="${data.top.dir}/es10fst/"/>
-    </antcall>
-    <echo> mzn-gecode </echo>
-    <antcall target="execHelp">
-        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gecode"/>
-        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
-        <param name="prefix" value="es10fst"/>
-        <param name="suffix" value=".stp.dzn"/>
-        <param name="data.dir" value="${data.top.dir}/es10fst/"/>
-    </antcall>
-    <!--echo> mzn-gurobi </echo>
-    <antcall target="execHelp">
-        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gurobi"/>
-        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
-        <param name="prefix" value="es10fst"/>
-        <param name="suffix" value=".stp.dzn"/>
-        <param name="data.dir" value="${data.top.dir}/es10fst/"/>
-    </antcall-->
 
-    <description>
-      Test set es20fst
-    </description>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">${top.dir}_total_time</echo>
 
-    <echo> mzn-chuffed </echo>
+    <tstamp>
+      <format property="start-chuffed" pattern="kkmmssSS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      mzn-chuffed
+    ${start-chuffed}</echo>
     <antcall target="execHelp">
-        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-chuffed"/>
-        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
-        <param name="prefix" value="es20fst"/>
-        <param name="suffix" value=".stp.dzn"/>
-        <param name="data.dir" value="${data.top.dir}/es20fst/"/>
+      <param name="mzn-solver" value="${minizinc_dir}/mzn-chuffed"/>
+      <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+      <param name="prefix" value="es10fst"/>
+      <param name="suffix" value=".stp.dzn"/>
+      <param name="data.dir" value="${data.top.dir}/es10fst/"/>
     </antcall>
-    <echo> mzn-g12fd </echo>
+    <tstamp>
+      <format property="chuffed" pattern="kkmmssSS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+    ${chuffed}</echo>
+
+    <tstamp>
+      <format property="start-gurobi" pattern="kkmmssSS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      mzn-gurobi
+    ${start-gurobi}</echo>
     <antcall target="execHelp">
-        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12fd"/>
-        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
-        <param name="prefix" value="es20fst"/>
-        <param name="suffix" value=".stp.dzn"/>
-        <param name="data.dir" value="${data.top.dir}/es20fst/"/>
+      <param name="mzn-solver" value="${minizinc_dir}/mzn-gurobi"/>
+      <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+      <param name="prefix" value="es10fst"/>
+      <param name="suffix" value=".stp.dzn"/>
+      <param name="data.dir" value="${data.top.dir}/es10fst/"/>
     </antcall>
-    <echo> mzn-g12mip </echo>
+    <tstamp>
+      <format property="gurobi" pattern="kkmmssSS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+    ${gurobi}</echo>
+
+    <tstamp>
+      <format property="start-g12fd" pattern="kkmmssSS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      mzn-g12fd
+    ${start-g12fd}</echo>
     <antcall target="execHelp">
-        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-g12mip"/>
-        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
-        <param name="prefix" value="es20fst"/>
-        <param name="suffix" value=".stp.dzn"/>
-        <param name="data.dir" value="${data.top.dir}/es20fst/"/>
+      <param name="mzn-solver" value="${minizinc_dir}/mzn-g12fd"/>
+      <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+      <param name="prefix" value="es10fst"/>
+      <param name="suffix" value=".stp.dzn"/>
+      <param name="data.dir" value="${data.top.dir}/es10fst/"/>
     </antcall>
-    <echo> mzn-gecode </echo>
+    <tstamp>
+      <format property="g12fd" pattern="kkmmssSS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+    ${g12fd}</echo>
+
+    <tstamp>
+      <format property="start-minizinc" pattern="kkmmssSS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      minizinc
+    ${start-minizinc}</echo>
     <antcall target="execHelp">
-        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gecode"/>
-        <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
-        <param name="prefix" value="es20fst"/>
-        <param name="suffix" value=".stp.dzn"/>
-        <param name="data.dir" value="${data.top.dir}/es20fst/"/>
+      <param name="mzn-solver" value="${minizinc_dir}/minizinc"/>
+      <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+      <param name="prefix" value="es10fst"/>
+      <param name="suffix" value=".stp.dzn"/>
+      <param name="data.dir" value="${data.top.dir}/es10fst/"/>
     </antcall>
+    <tstamp>
+      <format property="minizinc" pattern="kkmmssSS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+    ${minizinc}</echo>
+
+    <tstamp>
+      <format property="start-mzn-cbc" pattern="kkmmssSS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      mzn-cbc
+    ${start-mzn-cbc}</echo>
+    <antcall target="execHelp">
+      <param name="mzn-solver" value="${minizinc_dir}/mzn-cbc"/>
+      <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
+      <param name="prefix" value="es10fst"/>
+      <param name="suffix" value=".stp.dzn"/>
+      <param name="data.dir" value="${data.top.dir}/es10fst/"/>
+    </antcall>
+    <tstamp>
+      <format property="mzn-cbc" pattern="kkmmssSS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+    ${mzn-cbc}</echo>
+
+    <!-- <description> -->
+    <!--   Test set es20fst -->
+    <!-- </description> -->
+
+    <!-- <echo> mzn-chuffed </echo> -->
+    <!-- <antcall target="execHelp"> -->
+    <!--     <param name="mzn-solver" value="${minizinc_dir}/mzn-chuffed"/> -->
+    <!--     <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/> -->
+    <!--     <param name="prefix" value="es20fst"/> -->
+    <!--     <param name="suffix" value=".stp.dzn"/> -->
+    <!--     <param name="data.dir" value="${data.top.dir}/es20fst/"/> -->
+    <!-- </antcall> -->
+    <!-- <echo> mzn-g12fd </echo> -->
+    <!-- <antcall target="execHelp"> -->
+    <!--     <param name="mzn-solver" value="${minizinc_dir}/mzn-g12fd"/> -->
+    <!--     <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/> -->
+    <!--     <param name="prefix" value="es20fst"/> -->
+    <!--     <param name="suffix" value=".stp.dzn"/> -->
+    <!--     <param name="data.dir" value="${data.top.dir}/es20fst/"/> -->
+    <!-- </antcall> -->
+    <!-- <echo> mzn-g12mip </echo> -->
+    <!-- <antcall target="execHelp"> -->
+    <!--     <param name="mzn-solver" value="${minizinc_dir}/mzn-g12mip"/> -->
+    <!--     <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/> -->
+    <!--     <param name="prefix" value="es20fst"/> -->
+    <!--     <param name="suffix" value=".stp.dzn"/> -->
+    <!--     <param name="data.dir" value="${data.top.dir}/es20fst/"/> -->
+    <!-- </antcall> -->
+    <!-- <echo> mzn-gecode </echo> -->
+    <!-- <antcall target="execHelp"> -->
+    <!--     <param name="mzn-solver" value="${minizinc_dir}/mzn-gecode"/> -->
+    <!--     <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/> -->
+    <!--     <param name="prefix" value="es20fst"/> -->
+    <!--     <param name="suffix" value=".stp.dzn"/> -->
+    <!--     <param name="data.dir" value="${data.top.dir}/es20fst/"/> -->
+    <!-- </antcall> -->
     <!--echo> mzn-gurobi </echo>
-    <antcall target="execHelp">
-        <param name="mzn-solver" value="/Applications/MiniZincIDE.app/Contents/Resources/mzn-gurobi"/>
+        <antcall target="execHelp">
+        <param name="mzn-solver" value="${minizinc_dir}/mzn-gurobi"/>
         <param name="Constraint.Solver" value="${src.dir}/${top.dir}/Solver.mzn"/>
         <param name="prefix" value="es20fst"/>
         <param name="suffix" value=".stp.dzn"/>
         <param name="data.dir" value="${data.top.dir}/es20fst/"/>
-    </antcall-->
+        </antcall-->
 
   </target>
 

@@ -6,13 +6,15 @@
 
 <project name="TranAmeri" default="allSolver" basedir=".">
   <import file="${basedir}/src/FatherNode/build.xml"/>
+  <property name="minizinc_dir" value="${basedir}/tools/MiniZincIDE-2.1.6-bundle-linux-x86_64"/>
+  <property file="local.properties"/>
 
   <target name="FatherNode">
     <antcall target="exec"/>
   </target>
 
   <target name="allSolver">
-    <antcall target="FatherNode"/>
+    <ant antfile="src/FatherNode/build.xml"/>
   </target>
 
 </project>

@@ -159,6 +159,12 @@ n_orange = ("Boston", "New York", "Washington", "Richmond", "Winston", "Charlest
 #         print(s)
 #         print(l)
 
+def adjacent_node(rn1, cn1, rn2, cn2):
+    if rn2 > len(nodes):
+        return False;
+    if cn2 not in nodes[rn2 -1]:
+        return False;
+
 def print_adjacency(rn1, cn1, dirn, rn2, cn2, indent = 0, to = sys.stdout):
     if rn2 > len(nodes):
         return
@@ -176,6 +182,36 @@ def print_adjacency(rn1, cn1, dirn, rn2, cn2, indent = 0, to = sys.stdout):
           " node_" + str(rn2) + "_" + str(cn2) + ") " + str(cost) + ")", file=to)
     print(" " * indent + "(= (link_cost node_" + str(rn2) + "_" + str(cn2) +
           " node_" + str(rn1) + "_" + str(cn1) + ") " + str(cost) + ")", file=to)
+
+def from_line_to_node(lineN):
+    row = 1
+    for i in nodes:
+        if lineN > len(i):
+            row += 1
+            lineN -= len(i)
+        else:
+            return row, i[lineN-1]
+
+def adjacency(firstNode, secondNode):
+    row1 = firstNode[0]
+    col1 = firstNode[1]
+    row2 = secondNode[0]
+    col2 = secondNode[1]
+
+    if (row1 == row2) and ((col1 == col2 + 1) or (col2 == col1 + 1)):
+        return True
+    if (row1 == row2 - 1):
+        if (row1 % 2 == 1):
+            return (col1 - 1 == col2) or (col1 == col2)
+        else:
+            return (col1 + 1 == col2) or (col1 == col2)
+    if (row2 == row1 - 1):
+        if (row2 % 2 == 1):
+            return (col2 - 1 == col1) or (col2 == col1)
+        else:
+            return (col2 + 1== col1) or (col2 == col1)
+    return False
+
 
 # def print_map():
 #     print("(:objects")
@@ -217,13 +253,12 @@ def print_map_facts(indent = 0, to = sys.stdout):
                     # dir=1 goes to (row + 1, col)
                     print_adjacency(rnum, cnum, 1, rnum + 1, cnum, indent, to=to)
                     # dir=2 goes to (row + 1, col - 1)
-                    print_adjacency(rnum, cnum, 1, rnum + 1, cnum - 1, indent, to=to)
+                    print_adjacency(rnum, cnum, 2, rnum + 1, cnum - 1, indent, to=to)
                 else:  # if row is even, then
                     # dir=1 goes to (row + 1, col + 1)
-                    print_adjacency(rnum, cnum, 2, rnum + 1, cnum + 1, indent, to=to)
+                    print_adjacency(rnum, cnum, 1, rnum + 1, cnum + 1, indent, to=to)
                     # dir=2 goes to (row + 1, col)
                     print_adjacency(rnum, cnum, 2, rnum + 1, cnum, indent, to=to)
-
 
 def print_reached_fact(node, indent = 0, to = sys.stdout):
     rnum, cnum = node
@@ -268,6 +303,107 @@ def print_problem(g, b, y, r, o, to=sys.stdout):
     print("  (:metric minimize (total-cost))", file=to)
     print(" )", file=to)
 
+def evaluate_link_cost(node1, node2):
+    if (node1[0] < node2[0]):
+        row = node1[0]
+        col = node1[1]
+        colC = node2[1]
+    elif (node1[0] > node2[0]):
+        row = node2[0]
+        col = node2[1]
+        colC = node2[1]
+    else:
+        row = node1[0]
+        col = min(node1[1], node2[1])
+        return dlink_to_value(row, col, 0)
+    if (row % 2 == 1):
+        if colC == col - 1:
+            return dlink_to_value(row, col, 2)
+        else:
+            return dlink_to_value(row, col, 1)
+    else:
+        if colC == col + 1:
+            return dlink_to_value(row, col, 1)
+        else:
+            return dlink_to_value(row, col, 2)
+
+def dlink_to_value(row, col, dirc):
+    if (row, col, dirc) in dlinks:
+        return "2"
+    else:
+        return "1"
+
+
+
+def generate_endnode(node1, node2):
+    lineValue = ["false"] * 188
+    lineValue[node1-1] = "true"
+    lineValue[node2-1] = "true"
+    return lineValue
+
+def print_dzn(g, b, y, r, o, to=sys.stdout):
+    assert(0 <= g < len(c_green))
+    assert(0 <= b < len(c_blue))
+    assert(0 <= y < len(c_yellow))
+    assert(0 <= r < len(c_red))
+    assert(0 <= o < len(c_orange))
+
+    print("nbV=188;", file=to)
+    print("nbE=509;", file=to )
+    to.write("map = [|"); to.flush()
+    endnodes=[]
+    link_cost=[]
+    recording=[]
+    maps = []
+    for i in range(188):
+        maps.append(["false"] * 509)
+    for i in range(1, 189):
+        for j in range(1, 189):
+            if adjacency(from_line_to_node(i), from_line_to_node(j)):
+                # generaete the endndoes list
+                if not (((i,j) in recording) or ((j,i) in recording)):
+                    recording.append((i,j))
+                    temp = generate_endnode(i, j)
+                    endnodes.append(temp)
+                    link_cost.append(evaluate_link_cost(from_line_to_node(i), from_line_to_node(j)))
+                    maps[i-1][len(link_cost) - 1] = "true"
+                    maps[j-1][len(link_cost) - 1] = "true"
+    for i in maps:
+        to.write(",".join(i))
+        if (i == maps[-1]):
+            to.write("|];\n")
+        else:
+            to.write("\n|")
+
+    to.write("endnodes=[|"); to.flush()
+    for i in endnodes:
+        to.write(",".join(i))
+        if (i == endnodes[-1]):
+            to.write("|];\n")
+        else:
+            to.write("\n|")
+    terminals=[]
+    to.write("terminals={")
+    terminals.append(from_node_to_line(c_green[g]))
+    terminals.append(from_node_to_line(c_blue[b]))
+    terminals.append(from_node_to_line(c_yellow[y]))
+    terminals.append(from_node_to_line(c_red[r]))
+    terminals.append(from_node_to_line(c_orange[o]))
+    to.write(",".join(terminals) + "};\n")
+
+    to.write("link_cost=[")
+    to.write(",".join(link_cost) + "];")
+    to.flush()
+
+def from_node_to_line(nodeP):
+    row=nodeP[0] - 1
+    col=nodeP[1]
+    count = 0
+    for i in range(row):
+        count += len(nodes[i])
+    count += nodes[row].index(col) + 1
+    return str(count)
+
 
 def generate_all(limit = 1):
     count = 0
@@ -276,14 +412,12 @@ def generate_all(limit = 1):
             for y in range(len(c_yellow)):
                 for r in range(len(c_red)):
                     for o in range(len(c_orange)):
-                        fo = open("p-" + str(g) + "-" + str(b) + "-" + str(y) +
-                                  "-" + str(r) + "-" + str(o) + ".pddl", "w")
-                        print_problem(g, b, y, r, o, to = fo)
+                        fo = open("transamerica" + str(count) + ".dzn", 'w')
+                        print_dzn(g, b, y, r, o, to = fo)
                         fo.close()
                         count += 1
                         if count > limit:
                             return
-
 
 if __name__ == '__main__':
     if len(sys.argv) > 5:
@@ -300,10 +434,7 @@ if __name__ == '__main__':
         print(", ".join([n_green[g], n_blue[b], n_yellow[y], n_red[r], n_orange[o]]))
     elif len(sys.argv) > 1:
         limit = int(sys.argv[1])
-        confirm = input("Do you really want to generate " +
-                        str(limit) + " instances?")
-        if confirm == "YES":
-            generate_all(limit)
+        generate_all(limit)
     else:
         print(sys.argv[0] + " <g> <b> <y> <r> <o> : map index to names")
         print(sys.argv[0] + " <N> : generate first N instances")

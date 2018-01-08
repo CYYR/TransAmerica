@@ -48,7 +48,7 @@ constraint forall (n1, n2 in nodes where not(n1=min(terminals))) (father_node[n1
 
 constraint distances[min(terminals)] = 1;
 
-constraint forall (n in nodes) (vs[n]=0 -> distances[n]=nb);
+constraint forall (n in nodes) (vs[n]=0 -> distances[n]=nbV);
 
 constraint w = sum (i in edges) (es[i] * link_cost[i]);
 
