@@ -1,63 +1,75 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 import sys
+import os
 
-def to_length_nine(aString):
-    while len(aString) < 9:
-        aString += "0"
-    return aString
+def quick_plot():
+    name = []
+    time = []
+    sub = {}
 
-def quick_plot(path, str_path):
-    sat_file = open(path, 'r')
-    title = sat_file.readline().strip()
-    name=[]
-    time=[]
+    # Read the statistics
+    sat_file = open(os.getcwd() + "/../../output/FatherNode-output.txt", 'r')
+
+    # grep the big title
+    headline = sat_file.readline().strip()
     while (True):
-        subtitle = sat_file.readline().strip()
-        if len(subtitle) == 0:
+        # Read from file
+        title = sat_file.readline().strip()
+        if (len(title) == 0):
             break
-        name.append(subtitle)
-        start_time = to_length_nine(sat_file.readline().strip())
-        end_time = to_length_nine(sat_file.readline().strip())
-        time.append(time_different(start_time, end_time))
+        name.append(title)
+        sub[title]=list()
+        start_time = sat_file.readline().strip()
 
-    n_groups = len(time)
+        subtitle = sat_file.readline().strip()
 
-    fig, ax = plt.subplots()
+        while not (ord(subtitle[0]) >= 48 and ord(subtitle[0]) <= 57):
+            substart = sat_file.readline().strip()
+            subend = sat_file.readline().strip()
+
+            sub[title].append(time_different(substart, subend))
+            subtitle = sat_file.readline().strip()
+
+        time.append(time_different(start_time, subtitle))
+
+    plt.figure("TAbench Total Execution Time")
+
     index = np.arange(len(time))
     bar_width = 0.35
-
     opacity = 0.4
-    rects1 = plt.bar(index, time, bar_width, alpha=opacity, color='r', label="es10fst")
 
-    plt.xlabel('Solver')
-    plt.ylabel('Time')
+    rects1 = plt.bar(index, time, bar_width, alpha=opacity, color='b', label="es10fst")
+
+    plt.xlabel("Solver")
+    plt.ylabel("Time (millisecond)")
     plt.title(title)
     plt.xticks(index, name)
     plt.ylim(0, max(time) + 100)
     plt.legend()
 
     plt.tight_layout()
-    plt.savefig(str_path + str(title) + "jpg")
+    plt.savefig(os.getcwd() + "/../../output/" + headline +"_total.png")
+
+    plt.figure("TAbench Single Execution Time")
+
+    for i in sub.keys():
+        x = range(0, len(sub[i]))
+        plt.plot(x, sub[i], label=i)
+    plt.ylabel("millisecond")
+    plt.legend()
+    plt.savefig(os.getcwd() + "/../../output/" + headline + "_single.png")
 
 def time_different(start, end):
-    hou1 = int(start[0:2])
-    min1 = int(start[2:4])
-    sec1 = int(start[4:6])
-    minisec1 = int(start[6:9])
-    hou2 = int(end[0:2])
-    min2 = int(end[2:4])
-    sec2 = int(end[4:6])
-    minisec2 = int(end[6:9])
-    hourd = hou2 - hou1
-    mind = min2 - min1
-    secd = sec2 - sec1
-    minisecd = minisec2 - minisec1
+    startE = start.split('-')
+    endE = end.split('-')
+
+    hourd = int(endE[0]) - int(startE[0])
+    mind = int(endE[1]) - int(startE[1])
+    secd = int(endE[2]) - int(startE[2])
+    minisecd = int(endE[3]) - int(startE[3])
+
     return (hourd * 60 * 60 * 1000) + (mind * 60 * 1000) + (secd * 1000) + (minisecd)
 
 if __name__=="__main__":
-    if (len(sys.argx) != 3):
-        print("plotting.py <Path_to_Statistics> <Path_for_store_the_tables>")
-    else:
-        quick_plot(sys.argv[1], sys.argv[2])
+    quick_plot()

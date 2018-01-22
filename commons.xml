@@ -35,111 +35,292 @@
 
   <target name="execHelp">
     <echo> ${mzn-solver} </echo>
-    <exec executable="${mzn-solver}" dir="${data.dir}/" failonerror="yes">
+
+    <tstamp>
+      <format property="start-1" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-1
+      ${start-1}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}/" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}01${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-1" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-1}</echo>
+
+    <tstamp>
+      <format property="start-2" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-2
+      ${start-2}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}02.stp.dzn"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-2" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-2}</echo>
+
+    <tstamp>
+      <format property="start-3" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-3
+      ${start-3}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}03${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-3" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-3}</echo>
+
+    <tstamp>
+      <format property="start-4" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-4
+      ${start-4}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}04${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-4" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-4}</echo>
+
+    <tstamp>
+      <format property="start-5" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-5
+      ${start-5}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}05${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-5" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-5}</echo>
+
+    <tstamp>
+      <format property="start-6" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-6
+      ${start-6}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}06${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-6" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-6}</echo>
+
+    <tstamp>
+      <format property="start-7" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-7
+      ${start-7}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}07${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-7" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-7}</echo>
+
+    <tstamp>
+      <format property="start-8" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-8
+      ${start-8}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}08${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-8" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-8}</echo>
+
+    <tstamp>
+      <format property="start-9" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-9
+      ${start-9}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}09${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-9" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-9}</echo>
+
+    <tstamp>
+      <format property="start-10" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-10
+      ${start-10}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}10${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-10" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-10}</echo>
+
+    <tstamp>
+      <format property="start-11" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-11
+      ${start-11}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}11${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-11" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-11}</echo>
+
+    <tstamp>
+      <format property="start-12" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-12
+      ${start-12}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}12${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-12" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-12}</echo>
+
+    <tstamp>
+      <format property="start-13" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-13
+      ${start-13}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}13${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-13" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-13}</echo>
+
+    <tstamp>
+      <format property="start-14" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-14
+      ${start-14}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}14${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
-    <exec executable="${mzn-solver}" dir="${data.dir}" failonerror="yes">
+    <tstamp>
+      <format property="end-14" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-14}</echo>
+
+    <tstamp>
+      <format property="start-15" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${mzn-solver}-15
+      ${start-15}</echo>
+    <exec executable="${minizinc_dir}/${mzn-solver}" dir="${data.dir}" failonerror="yes">
       <arg value="-G"/>
       <arg value="linear"/>
       <arg value="${Constraint.Solver}"/>
       <arg value="${prefix}15${suffix}"/>
       <arg value="--all-solutions"/>
     </exec>
+    <tstamp>
+      <format property="end-15" pattern="kk-mm-ss-SS"/>
+    </tstamp>
+    <echo file="${dist.dir}/${top.dir}-output.txt" append="yes">
+      ${end-15}</echo>
+
   </target>
 
 </project>

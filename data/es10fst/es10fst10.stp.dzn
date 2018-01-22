@@ -41,5 +41,5 @@ endnodes = [|false,false,false,false,false,false,false,true,false,false,false,tr
 |false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true
 |true,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false
 |];
-terminals = {1,2,3,4,5,6,7,8,9,10};
+terminals = {1,4,7,8,9,10,12,13,14,17};
 link_cost = [303519,1435792,1132273,3653998,4244448,2387142,3211868,1594511,824726,1675802,1675802,824726,1539863,326674,166437,2204352,1132989,1596793,278016,961307,1453108];
