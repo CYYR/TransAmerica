@@ -18,7 +18,12 @@
     <touch file="${dist.dir}/${top.dir}-output.txt"/>
   </target>
 
-  <target name="output"/>
+  <target name="output">
+    <!-- Draw the graph of all statistics -->
+    <exec executable="/usr/local/bin/python3" dir="${basedir}/harness/src" failonerror="yes">
+      <arg value="plotting.py"/>
+    </exec>
+  </target>
 
   <target name="data">
     <exec executable="/usr/local/bin/python3" dir="${basedir}/data/trans" failonerror="yes">

@@ -39,7 +39,7 @@ def quick_plot():
     bar_width = 0.35
     opacity = 0.4
 
-    rects1 = plt.bar(index, time, bar_width, alpha=opacity, color='b', label="es10fst")
+    plt.bar(index, time, bar_width, alpha=opacity, color='b', label="es10fst")
 
     plt.xlabel("Solver")
     plt.ylabel("Time (millisecond)")
@@ -54,11 +54,44 @@ def quick_plot():
     plt.figure("TAbench Single Execution Time")
 
     for i in sub.keys():
-        x = range(0, len(sub[i]))
-        plt.plot(x, sub[i], label=i)
+        plt.plot(range(0, len(sub[i])), sub[i], label=i)
+    plt.title("Single Execution Time")
     plt.ylabel("millisecond")
     plt.legend()
     plt.savefig(os.getcwd() + "/../../output/" + headline + "_single.png")
+
+    maximum = []
+    plt.figure("TAbench Maximum Execution Time")
+    for i in sub.keys():
+        maximum.append(max(sub[i]))
+    plt.bar(index, maximum, bar_width, alpha=opacity, color='b', label="es10fst")
+
+    plt.xlabel("Solver")
+    plt.ylabel("Time (millisecond)")
+    plt.title(title)
+    plt.xticks(index, name)
+    plt.ylim(0, max(maximum) + 100)
+    plt.legend()
+
+    plt.tight_layout()
+    plt.savefig(os.getcwd() + "/../../output/" + headline +"_maximum.png")
+
+    minimum = []
+    plt.figure("TAbench Minimum Execution Time")
+    for i in sub.keys():
+        minimum.append(min(sub[i]))
+    plt.bar(index, minimum, bar_width, alpha=opacity, color='b', label="es10fst")
+
+    plt.xlabel("Solver")
+    plt.ylabel("Time (millisecond)")
+    plt.title(title)
+    plt.xticks(index, name)
+    plt.ylim(0, max(minimum) + 100)
+    plt.legend()
+
+    plt.tight_layout()
+    plt.savefig(os.getcwd() + "/../../output/" + headline +"_minimum.png")
+
 
 def time_different(start, end):
     startE = start.split('-')
